@@ -92,7 +92,7 @@ const currentYear = new Date().getFullYear();
   <footer>
     <div class="container">
       <p>
-        &copy; {copyrightYear}–{currentYear}{" "}
+        &copy; {copyrightYear === currentYear ? currentYear : `${copyrightYear}–${currentYear}`}{" "}
         {copyrightUrl ? <a href={copyrightUrl}>{copyrightName}</a> : copyrightName}
       </p>
     </div>
