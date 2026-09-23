@@ -647,3 +647,39 @@ a.button-external {
     color: $text-secondary;
   }
 }
+
+@mixin print-qr($size: 12rem) {
+  display: grid;
+  justify-items: center;
+  gap: 0.35rem;
+  break-inside: avoid;
+
+  img {
+    width: $size;
+    height: $size;
+    padding: 0.25rem;
+    background: #fff;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+}
+
+@mixin print-fixed-copyright {
+  position: fixed;
+  z-index: 2;
+  right: 0;
+  bottom: 3mm;
+  left: 0;
+  display: block !important;
+  margin: 0;
+  background: transparent !important;
+  border: none;
+  color: rgb(244 248 250 / 55%);
+  font-size: 0.65rem;
+  line-height: 1;
+  text-align: center;
+}
