@@ -399,23 +399,26 @@ article p {
   }
 }
 
-.hero-photo {
+.hero-photo-wrap {
   order: 2;
   flex: 1 1 10rem;
   max-width: 17rem;
   width: 100%;
-  height: auto;
+  margin-top: 1rem;
   border-radius: 0.75rem;
-  object-fit: cover;
-  display: block;
-  border: none;
   mask-image: radial-gradient(ellipse at center, black 55%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse at center, black 55%, transparent 100%);
 
   @media (min-width: $narrow-viewport) {
     align-self: flex-start;
-    margin-top: 1rem;
   }
+}
+
+.hero-photo {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
 }
 
 // Markup: `.hero-dark > .hero.container`, see the theme-css skill.
