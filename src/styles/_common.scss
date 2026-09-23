@@ -405,9 +405,7 @@ article p {
   flex: 1 1 10rem;
   max-width: 17rem;
   width: 100%;
-  overflow: hidden;
   margin-top: 1rem;
-  border-radius: 0.75rem;
 
   @media (min-width: $narrow-viewport) {
     align-self: flex-start;
