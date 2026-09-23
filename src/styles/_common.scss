@@ -409,14 +409,6 @@ article p {
   margin-top: 1rem;
   border-radius: 0.75rem;
 
-  &::after {
-    position: absolute;
-    inset: 0;
-    content: "";
-    background: radial-gradient(ellipse at center, transparent 35%, $header-bg 100%);
-    pointer-events: none;
-  }
-
   @media (min-width: $narrow-viewport) {
     align-self: flex-start;
   }
