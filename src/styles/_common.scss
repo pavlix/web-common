@@ -408,6 +408,14 @@ article p {
   overflow: hidden;
   margin-top: 1rem;
   border-radius: 0.75rem;
+  mask-image:
+    linear-gradient(to right, transparent, black 35%, black 65%, transparent),
+    linear-gradient(to bottom, transparent, black 35%, black 65%, transparent);
+  mask-composite: intersect;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent, black 35%, black 65%, transparent),
+    linear-gradient(to bottom, transparent, black 35%, black 65%, transparent);
+  -webkit-mask-composite: source-in, source-in;
 
   @media (min-width: $narrow-viewport) {
     align-self: flex-start;
