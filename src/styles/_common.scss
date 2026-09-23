@@ -409,12 +409,12 @@ article p {
   margin-top: 1rem;
   border-radius: 0.75rem;
   mask-image:
-    linear-gradient(to right, transparent, black 35%, black 65%, transparent),
-    linear-gradient(to bottom, transparent, black 35%, black 65%, transparent);
+    linear-gradient(to right, transparent, black 25%, black 75%, transparent),
+    linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
   mask-composite: intersect;
   -webkit-mask-image:
-    linear-gradient(to right, transparent, black 35%, black 65%, transparent),
-    linear-gradient(to bottom, transparent, black 35%, black 65%, transparent);
+    linear-gradient(to right, transparent, black 25%, black 75%, transparent),
+    linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
   -webkit-mask-composite: source-in, source-in;
 
   @media (min-width: $narrow-viewport) {
