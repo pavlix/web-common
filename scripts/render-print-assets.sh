@@ -2,14 +2,18 @@
 set -euo pipefail
 
 if [[ $# -ne 4 ]]; then
-  echo "Usage: render-print-assets.sh URL PDF_OUTPUT PNG_OUTPUT PREVIEW_PORT" >&2
+  echo "Usage: render-print-assets.sh URL ASSET_NAME PREVIEW_PORT SITE_DIR" >&2
   exit 2
 fi
 
 url="$1"
-pdf_file="$2"
-png_prefix="$3"
-preview_port="$4"
+asset_name="$2"
+preview_port="$3"
+site_dir="$4"
+public_dir="$site_dir/public"
+dist_dir="$site_dir/dist"
+pdf_file="$public_dir/$asset_name.pdf"
+png_prefix="$public_dir/$asset_name"
 
 browser="${BROWSER_BIN:-}"
 if [[ -z "$browser" ]]; then
@@ -47,3 +51,8 @@ command -v pdftoppm >/dev/null || {
 }
 echo "Rasterizing PNG from the PDF with pdftoppm"
 pdftoppm -singlefile -png -r 150 "$pdf_file" "$png_prefix"
+
+cp "$pdf_file" "$dist_dir/$asset_name.pdf"
+cp "$png_prefix.png" "$dist_dir/$asset_name.png"
+
+echo "Generated $public_dir/$asset_name.pdf and $public_dir/$asset_name.png"
