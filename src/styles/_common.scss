@@ -400,14 +400,22 @@ article p {
 }
 
 .hero-photo-wrap {
+  position: relative;
   order: 2;
   flex: 1 1 10rem;
   max-width: 17rem;
   width: 100%;
+  overflow: hidden;
   margin-top: 1rem;
   border-radius: 0.75rem;
-  mask-image: radial-gradient(ellipse at center, black 55%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse at center, black 55%, transparent 100%);
+
+  &::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    background: radial-gradient(ellipse at center, transparent 50%, $header-bg 100%);
+    pointer-events: none;
+  }
 
   @media (min-width: $narrow-viewport) {
     align-self: flex-start;
