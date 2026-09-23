@@ -413,7 +413,7 @@ article p {
     position: absolute;
     inset: 0;
     content: "";
-    background: radial-gradient(ellipse at center, transparent 50%, $header-bg 100%);
+    background: radial-gradient(ellipse at center, transparent 35%, $header-bg 100%);
     pointer-events: none;
   }
 
