@@ -1,7 +1,8 @@
-# astro-business-theme
+# web-common
 
-Shared Astro layout and structural Sass for pavlix's small brochure/
-marketing sites, used as an npm dependency by each site's own repo.
+Shared Astro layout, structural Sass, and print-asset tooling for pavlix's
+small brochure/marketing sites. Site repositories vendor this repository as a
+git submodule and keep only site-specific print composition and asset names.
 
 Provides:
 

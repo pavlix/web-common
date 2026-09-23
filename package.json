@@ -1,5 +1,5 @@
 {
-  "name": "@pavlix/astro-business-theme",
+  "name": "@pavlix/web-common",
   "version": "0.1.0",
   "description": "Shared layout and structural Sass for pavlix's small brochure/marketing sites (Astro).",
   "type": "module",

@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -ne 4 ]]; then
+  echo "Usage: render-print-assets.sh URL PDF_OUTPUT PNG_OUTPUT PREVIEW_PORT" >&2
+  exit 2
+fi
+
+url="$1"
+pdf_file="$2"
+png_prefix="$3"
+preview_port="$4"
+
+browser="${BROWSER_BIN:-}"
+if [[ -z "$browser" ]]; then
+  browser="$(command -v chromium-browser || command -v chromium || command -v google-chrome || true)"
+fi
+if [[ -z "$browser" || ! -x "$browser" ]]; then
+  echo "A Chromium-based browser is required to generate print assets." >&2
+  exit 1
+fi
+
+npx astro preview stop >/dev/null 2>&1 || true
+npm run preview -- --host 127.0.0.1 --port "$preview_port" >/dev/null 2>&1 &
+preview_pid=$!
+trap 'kill "$preview_pid" 2>/dev/null || true' EXIT
+
+for attempt in {1..30}; do
+  if curl --fail --silent "http://127.0.0.1:$preview_port/" >/dev/null; then
+    break
+  fi
+  sleep 1
+done
+
+if ! curl --fail --silent "http://127.0.0.1:$preview_port/" >/dev/null; then
+  echo "Astro preview did not start." >&2
+  exit 1
+fi
+
+echo "Rendering PDF with $browser"
+"$browser" --headless --no-sandbox --disable-gpu \
+  --print-to-pdf="$pdf_file" "$url"
+
+command -v pdftoppm >/dev/null || {
+  echo "pdftoppm is required to generate PNG output from the PDF." >&2
+  exit 1
+}
+echo "Rasterizing PNG from the PDF with pdftoppm"
+pdftoppm -singlefile -png -r 150 "$pdf_file" "$png_prefix"
