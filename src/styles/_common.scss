@@ -409,14 +409,8 @@ article p {
   object-fit: cover;
   display: block;
   border: none;
-  mask-image:
-      linear-gradient(to right, transparent, black 25%, black 75%, transparent),
-      linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
-  mask-composite: intersect;
-  -webkit-mask-image:
-      linear-gradient(to right, transparent, black 25%, black 75%, transparent),
-      linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
-  -webkit-mask-composite: source-in, source-in;
+  mask-image: radial-gradient(ellipse at center, black 55%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 55%, transparent 100%);
 
   @media (min-width: $narrow-viewport) {
     align-self: flex-start;
