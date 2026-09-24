@@ -20,6 +20,12 @@ if [[ -z "$browser" ]]; then
   browser="$(command -v chromium-browser || command -v chromium || command -v google-chrome || true)"
 fi
 if [[ -z "$browser" || ! -x "$browser" ]]; then
+  if [[ -f "$pdf_file" && -f "$png_prefix.png" ]]; then
+    cp "$pdf_file" "$dist_dir/$asset_name.pdf"
+    cp "$png_prefix.png" "$dist_dir/$asset_name.png"
+    echo "Chromium unavailable; reused committed print assets"
+    exit 0
+  fi
   echo "A Chromium-based browser is required to generate print assets." >&2
   exit 1
 fi
